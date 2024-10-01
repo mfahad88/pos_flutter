@@ -29,7 +29,6 @@ class SalesScreen extends StatelessWidget {
 
                       return provider.products.where((element) {
 
-                        print(element.name!.toLowerCase().startsWith(textEditingValue.text.toLowerCase()));
                         return element.name!.toLowerCase().startsWith(textEditingValue.text.toLowerCase());
                       },).map((e) => e.name.toString(),);
                     },
