@@ -23,7 +23,16 @@ class SalesProvider extends ChangeNotifier{
   String? get selectedItem => _selectedItem;
 
   void addItems(Order order){
-    orders.add(order);
+    if(orders.any((element) => element.product!.name==order.product!.name,)){
+      for(int i=0;i<orders.length;i++){
+        if(orders[i].product!.name== order.product!.name){
+          orders[i].qty = orders[i].qty! + order.qty!;
+        }
+      }
+    }else {
+      orders.add(order);
+    }
+
     notifyListeners();
   }
   set selectedItem(String? value) {
@@ -35,4 +44,6 @@ class SalesProvider extends ChangeNotifier{
   set selectedQty(int? value) {
     _selectedQty = value;
   }
+
+
 }

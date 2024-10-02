@@ -4,6 +4,7 @@ import 'package:pos_flutter/models/Order.dart';
 import 'package:pos_flutter/models/Product.dart';
 import 'package:pos_flutter/providers/sales_provider.dart';
 import 'package:pos_flutter/widgets/order_list.dart';
+import 'package:pos_flutter/widgets/total_card.dart';
 import 'package:provider/provider.dart';
 
 class SalesScreen extends StatelessWidget {
@@ -93,7 +94,7 @@ class SalesScreen extends StatelessWidget {
                       SizedBox(
                         height: 40,
                         child: FilledButton(onPressed: () {
-                          provider.addItems(Order(provider.products.where((element) => element.name==provider.selectedItem,).first, provider.selectedQty));
+                          provider.addItems(Order(provider.products.where((element) => element.name==provider.selectedItem,).map((e) => e,).first, provider.selectedQty));
                           provider.qty_controller.clear();
                           provider.item_controller.clear();
                         }, child: Text('Add'),style: FilledButton.styleFrom(
@@ -112,6 +113,7 @@ class SalesScreen extends StatelessWidget {
                 Row(
                   children: [
                     OrderList(orders: provider.orders),
+                    TotalCard()
                   ],
                 )
               ],
