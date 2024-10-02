@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.blue.shade400,
           ),
           body: LayoutBuilder(builder: (context, constraints) {
-            final provider=context.watch<HomeProvider>();
+            final provider=context.read<HomeProvider>();
             return Row(
               children: [
                 Container(
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
         DeviceOrientation.landscapeRight,
         DeviceOrientation.landscapeLeft,
       ]);*/
-      final provider=context.watch<HomeProvider>();
+      final provider=context.read<HomeProvider>();
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(

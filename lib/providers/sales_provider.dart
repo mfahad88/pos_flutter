@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../models/Order.dart';
 import '../models/Product.dart';
 
 class SalesProvider extends ChangeNotifier{
@@ -11,4 +12,27 @@ class SalesProvider extends ChangeNotifier{
     Product('Shampoo XYZ', 33, 38, 38-33),
     Product('Shampoo ABCXYZ', 40, 45, 45-40),
   ];
+  TextEditingController qty_controller=TextEditingController();
+  TextEditingController item_controller=TextEditingController();
+
+  List<Order> orders=List.empty(growable: true);
+
+  String? _selectedItem;
+  int? _selectedQty;
+
+  String? get selectedItem => _selectedItem;
+
+  void addItems(Order order){
+    orders.add(order);
+    notifyListeners();
+  }
+  set selectedItem(String? value) {
+    _selectedItem = value;
+  }
+
+  int? get selectedQty => _selectedQty;
+
+  set selectedQty(int? value) {
+    _selectedQty = value;
+  }
 }
